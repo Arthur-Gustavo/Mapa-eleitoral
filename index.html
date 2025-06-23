@@ -27,7 +27,7 @@
 
         header {
             background: rgba(0, 0, 0, 0.7);
-            padding: 15px 20px;
+            padding: 10px 20px;
             box-shadow: 0 2px 15px rgba(0, 0, 0, 0.5);
             display: flex;
             justify-content: space-between;
@@ -56,23 +56,26 @@
 
         .controls {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         #filters {
             display: flex;
-            gap: 15px;
+            gap: 10px;
             background: rgba(0, 0, 0, 0.5);
-            padding: 10px 15px;
+            padding: 8px 12px;
             border-radius: 30px;
             align-items: center;
-            margin-right: 10px;
+            margin-right: 0px;
+            flex-wrap: wrap;
         }
 
         .filter-group {
             display: flex;
             flex-direction: column;
+            min-width: 120px;
         }
 
         .filter-label {
@@ -98,15 +101,35 @@
             transition: all 0.3s ease;
             outline: none;
             border: 1px solid #ffd700;
+            width: 100%;
         }
 
         select {
-            min-width: 120px;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 10px center;
+            background-size: 1em;
+        }
+
+        /* Correção de visibilidade para opções */
+        select option {
+            background: #2a5298;
+            color: white;
+            padding: 10px;
         }
 
         #refresh-button,
         #export-button {
-            padding: 10px 20px;
+            padding: 8px 15px;
+            /* Reduzido de 10px 20px */
+            height: 40px;
+            /* Altura fixa para alinhamento */
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         #refresh-button {
@@ -354,16 +377,20 @@
         .state-filters {
             display: flex;
             flex-wrap: wrap;
-            gap: 10px;
-            margin-top: 15px;
+            gap: 8px;
             justify-content: center;
         }
 
         .state-btn {
-            padding: 5px 10px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0;
             background: rgba(255, 215, 0, 0.2);
             border: 1px solid #ffd700;
-            border-radius: 20px;
             cursor: pointer;
             font-size: 0.85rem;
             transition: all 0.2s;
@@ -373,6 +400,7 @@
         .state-btn.active {
             background: #ffd700;
             color: #000;
+            font-weight: bold;
         }
 
         footer {
@@ -483,6 +511,36 @@
             font-weight: bold;
         }
 
+        /* Estilo para a tabela de votação nominal */
+        #votos-summary {
+            margin-top: 20px;
+            background: rgba(30, 30, 40, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+        }
+
+        #votos-summary h3 {
+            color: #ffd700;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+        .votos-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .votos-table th,
+        .votos-table td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+        }
+
+        .votos-table th {
+            color: #ffd700;
+        }
+
         @media (max-width: 1100px) {
             header {
                 flex-direction: column;
@@ -490,13 +548,15 @@
             }
 
             .controls {
-                width: 100%;
+                flex-direction: row;
+                /* Mantém em linha mesmo em telas menores */
                 justify-content: center;
+                gap: 8px;
             }
 
             #filters {
                 margin: 0 auto 10px;
-                width: 100%;
+                width: auto;
                 justify-content: center;
                 flex-wrap: wrap;
             }
@@ -515,20 +575,60 @@
         }
 
         @media (max-width: 768px) {
-
-            select,
-            button {
-                padding: 8px 12px;
-                font-size: 0.9rem;
+            #filters {
+                gap: 8px;
+                padding: 8px;
             }
 
             .filter-group {
                 min-width: 100px;
+                margin-bottom: 8px;
+            }
+
+            select,
+            button {
+                padding: 12px 10px;
+                font-size: 0.9rem;
             }
 
             #refresh-button,
             #export-button {
-                padding: 8px 15px;
+                padding: 12px 15px;
+            }
+
+            #info-panel {
+                width: 95%;
+            }
+
+            #toggle-panel {
+                right: 95%;
+            }
+
+            .votos-table {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .filter-group {
+                min-width: 100%;
+            }
+
+            select,
+            button {
+                width: 100%;
+            }
+
+            #filters {
+                flex-direction: column;
+            }
+
+            #info-panel {
+                width: 100%;
+            }
+
+            #toggle-panel {
+                right: 100%;
             }
         }
     </style>
@@ -556,8 +656,7 @@
                     <select id="cargo-select">
                         <option value="0011">Prefeito</option>
                         <option value="0012">Presidente</option>
-                        <option value="0003">Governador</option>
-                        <option value="0005">Senador</option>
+                        <option value="0013">Governador</option>
                     </select>
                 </div>
 
@@ -574,15 +673,7 @@
                     <span class="filter-label">Estado</span>
                     <select id="uf-select">
                         <option value="TODOS">Todos</option>
-                        <option value="AL">AL</option>
-                        <option value="BA">BA</option>
-                        <option value="CE">CE</option>
-                        <option value="MA">MA</option>
-                        <option value="PB">PB</option>
-                        <option value="PE">PE</option>
-                        <option value="PI">PI</option>
-                        <option value="RN">RN</option>
-                        <option value="SE">SE</option>
+                        <!-- Preenchido dinamicamente -->
                     </select>
                 </div>
 
@@ -598,13 +689,18 @@
                         <option value="BR">Todo Brasil</option>
                     </select>
                 </div>
+
+                <div class="button-group">
+                    <button id="refresh-button">
+                        <i class="fas fa-sync-alt"></i> Atualizar
+                    </button>
+                    <button id="export-button">
+                        <i class="fas fa-download"></i> Exportar
+                    </button>
+                </div>
             </div>
 
-            <button id="refresh-button">
-                <i class="fas fa-sync-alt"></i> Atualizar
-            </button>
-            <button id="export-button">
-                <i class="fas fa-download"></i> Exportar
+
             </button>
         </div>
     </header>
@@ -629,8 +725,25 @@
 
                 <!-- Painel do Agregador de Partidos Adicionado -->
                 <div id="party-summary">
-                    <h3>Prefeituras por Partido</h3>
+                    <h3>Prefeituras por Partido (Top 5)</h3>
                     <div id="party-stats"></div>
+                </div>
+
+                <!-- Painel de votação nominal por partido -->
+                <div id="votos-summary">
+                    <h3>Votação Nominal por Partido (Top 15)</h3>
+                    <table class="votos-table">
+                        <thead>
+                            <tr>
+                                <th>Partido</th>
+                                <th>Total de Votos</th>
+                                <th>%</th>
+                            </tr>
+                        </thead>
+                        <tbody id="votos-stats">
+                            <!-- Preenchido dinamicamente -->
+                        </tbody>
+                    </table>
                 </div>
 
                 <!-- Conteúdo será preenchido dinamicamente -->
@@ -676,6 +789,13 @@
             "BR": "Todo Brasil"
         };
 
+        // Todas as UFs do Brasil
+        const todasUFs = [
+            'AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA',
+            'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 'RN',
+            'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'
+        ];
+
         // Estados inicialmente carregados (Nordeste)
         let estadosCarregar = regioes["NE"];
 
@@ -713,7 +833,10 @@
             'PRD': '#05FFCF',
             'PCB': '#FF0000',
             'PCO': '#FF0000',
-            'PSTU': '#FF0000'
+            'PSTU': '#FF0000',
+            'PC do B': '#6E0001',
+            'AVANTE': '#BC5E02',
+            'MOBILIZA': '#C6045C'
         };
 
         // Função para mostrar o overlay de carregamento
@@ -732,13 +855,15 @@
             const progressText = document.getElementById('progress-text');
             const percentage = Math.round((current / total) * 100);
 
-            progressBar.style.width = `${percentage}%`;
-            progressText.textContent = `${current} de ${total} municípios processados (${percentage}%)`;
+            if (progressBar) progressBar.style.width = `${percentage}%`;
+            if (progressText) progressText.textContent = `${current} de ${total} municípios processados (${percentage}%)`;
         }
 
         // Função para criar filtros de estado
         function createStateFilters() {
             const container = document.getElementById('state-filters');
+            if (!container) return;
+
             container.innerHTML = '';
 
             // Mostrar apenas estados da região selecionada
@@ -755,6 +880,8 @@
         // Função para alternar filtro de estado
         function toggleStateFilter(uf) {
             const btn = document.querySelector(`.state-btn[data-uf="${uf}"]`);
+            if (!btn) return;
+
             btn.classList.toggle('active');
 
             // Atualizar municípios ativos
@@ -771,6 +898,25 @@
 
             // Atualizar o mapa
             updateMap();
+        }
+
+        // Função para preencher o seletor de UFs
+        function preencherSeletorUF() {
+            const ufSelect = document.getElementById('uf-select');
+            if (!ufSelect) return;
+
+            // Limpar opções existentes (exceto a primeira)
+            while (ufSelect.options.length > 1) {
+                ufSelect.remove(1);
+            }
+
+            // Adicionar todas as UFs
+            todasUFs.forEach(uf => {
+                const option = document.createElement('option');
+                option.value = uf;
+                option.textContent = uf;
+                ufSelect.appendChild(option);
+            });
         }
 
         // Função para filtrar por UF
@@ -792,9 +938,10 @@
 
             // Atualiza o agregador de partidos
             atualizarAgregadorPartidos();
+            atualizarVotosPartidos();
         }
 
-        // Função para atualizar o agregador de partidos
+        // Função para atualizar o agregador de partidos (prefeituras)
         function atualizarAgregadorPartidos() {
             const ufSelecionada = document.getElementById('uf-select').value;
             const contagem = {};
@@ -843,7 +990,61 @@
                     `;
                 });
 
-                document.getElementById('party-stats').innerHTML = html || '<p>Nenhum dado disponível</p>';
+                const partyStats = document.getElementById('party-stats');
+                if (partyStats) {
+                    partyStats.innerHTML = html || '<p>Nenhum dado disponível</p>';
+                }
+            }
+        }
+
+        // Função para atualizar a votação nominal por partido
+        function atualizarVotosPartidos() {
+            const ufSelecionada = document.getElementById('uf-select').value;
+            const votosPartido = {};
+            let totalVotos = 0;
+
+            if (geoJsonData && geoJsonData.features) {
+                geoJsonData.features.forEach(feature => {
+                    const uf = feature.properties.SIGLA_UF;
+
+                    // Aplica filtro de UF
+                    const deveContar = ufSelecionada === 'TODOS' || ufSelecionada === uf;
+
+                    if (deveContar && feature.properties.resultados && Array.isArray(feature.properties.resultados)) {
+                        feature.properties.resultados.forEach(candidato => {
+                            if (candidato.partido && candidato.votos) {
+                                if (!votosPartido[candidato.partido]) {
+                                    votosPartido[candidato.partido] = 0;
+                                }
+                                votosPartido[candidato.partido] += candidato.votos;
+                                totalVotos += candidato.votos;
+                            }
+                        });
+                    }
+                });
+
+                // Converte para array e ordena
+                const ranking = Object.entries(votosPartido)
+                    .sort((a, b) => b[1] - a[1])
+                    .slice(0, 15); // Top 15 partidos
+
+                // Gera HTML do ranking
+                let html = '';
+                ranking.forEach(([partido, votos]) => {
+                    const porcentagem = totalVotos > 0 ? ((votos / totalVotos) * 100).toFixed(2) : 0;
+                    html += `
+                        <tr>
+                            <td style="color: ${coresPartido[partido] || '#fff'}"><strong>${partido}</strong></td>
+                            <td>${votos.toLocaleString()}</td>
+                            <td>${porcentagem}%</td>
+                        </tr>
+                    `;
+                });
+
+                const votosStats = document.getElementById('votos-stats');
+                if (votosStats) {
+                    votosStats.innerHTML = html || '<tr><td colspan="3">Nenhum dado disponível</td></tr>';
+                }
             }
         }
 
@@ -873,14 +1074,19 @@
                 ? Object.values(regioes).flat().filter((v, i, a) => a.indexOf(v) === i)
                 : regioes[regiao];
 
-            // Atualizar exibição da região
-            document.getElementById('current-region').textContent = `Região ${nomesRegioes[regiao]}`;
+            // Atualizar exibição da região (com verificação)
+            const currentRegionElement = document.getElementById('current-region');
+            if (currentRegionElement) {
+                currentRegionElement.textContent = `Região ${nomesRegioes[regiao]}`;
+            }
 
             createStateFilters();
 
             // Inicialmente seleciona todos os estados
             municipiosAtivos = [...estadosCarregar];
-            document.querySelectorAll('.state-btn').forEach(btn => btn.classList.add('active'));
+            document.querySelectorAll('.state-btn').forEach(btn => {
+                if (btn) btn.classList.add('active');
+            });
 
             try {
                 // Carrega os arquivos necessários
@@ -1011,6 +1217,7 @@
                 hideLoading();
                 // Atualiza o agregador de partidos após carregar
                 atualizarAgregadorPartidos();
+                atualizarVotosPartidos();
             }
         }
 
@@ -1018,6 +1225,7 @@
         function mostrarDetalhesMunicipio(properties) {
             const panel = document.getElementById('info-panel');
             const content = document.getElementById('panel-content');
+            if (!panel || !content) return;
 
             // Mostra o painel
             panel.classList.remove('hidden');
@@ -1085,6 +1293,7 @@
             content.innerHTML = html;
             // Atualiza o agregador de partidos após mostrar detalhes
             atualizarAgregadorPartidos();
+            atualizarVotosPartidos();
         }
 
         // Função para exportar apenas a malha de municípios em alta resolução
@@ -1246,7 +1455,7 @@
                 // Configurar o botão de salvar
                 document.getElementById('save-export').addEventListener('click', () => {
                     const link = document.createElement('a');
-                    link.download = `Mapa_Eleitoral_Nordeste_${new Date().toISOString().slice(0, 10)}.png`;
+                    link.download = `Mapa_Eleitoral_${new Date().toISOString().slice(0, 10)}.png`;
                     link.href = dataURL;
                     link.click();
                     document.body.removeChild(overlay);
@@ -1290,6 +1499,7 @@
         document.getElementById('turno-select').addEventListener('change', carregarDados);
 
         // Inicia o carregamento dos dados
+        preencherSeletorUF();
         document.getElementById('uf-select').value = 'TODOS';
         carregarDados();
     </script>
