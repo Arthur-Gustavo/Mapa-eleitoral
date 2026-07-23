@@ -353,7 +353,13 @@ export function mostrarDetalhesMunicipio(properties) {
                     const cargoSelect = document.getElementById('cargo');
                     const cargoMap = { presidente: '0001', governador: '0003', senador: '0005', prefeito: '0011' };
                     const cargoCode = cargoMap[cargoSelect.value];
-                    window.location.href = `../ZONAS/zone.html?municipio=${codigo}&uf=${properties.SIGLA_UF}&ano=${ano}&cargo=${cargoCode}`;
+                    const basePath =
+                        window.location.hostname === 'arthur-gustavo.github.io'
+                            ? '/Mapa-eleitoral'
+                            : '';
+
+                    window.location.href =
+                        `${basePath}/ZONAS/zone.html?municipio=${codigo}&uf=${properties.SIGLA_UF}&ano=${ano}&cargo=${cargoCode}`;
                 };
                 btn.style.display = 'flex';
             } else {

@@ -211,7 +211,7 @@ turnoSelect.addEventListener('change', reloadWithNewParams);
 cargoSelect.addEventListener('change', reloadWithNewParams);
 
 backBtn.addEventListener('click', () => {
-    window.location.href = '../new%20index.html';
+    window.location.href = '../index.html';
 });
 
 (async () => {
