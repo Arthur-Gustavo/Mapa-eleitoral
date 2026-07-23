@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <title>Mapa Eleitoral Interativo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <i class="fas fa-vote-yea"></i>
+            <h1>Mapa Eleitoral Interativo</h1>
+        </div>
+        <div class="controls">
+            <div id="filters">
+                <div class="filter-row">
+                    <div class="filter-column">
+                        <div class="filter-group">
+                            <span class="filter-label">Ano</span>
+                            <select id="ano">
+                                <option value="2002">2002</option>
+                                <option value="2006">2006</option>
+                                <option value="2010">2010</option>
+                                <option value="2014">2014</option>
+                                <option value="2018">2018</option>
+                                <option selected value="2022">2022</option>
+                                <option value="2024">2024</option>
+                                <option value="2026">2026</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label">Turno</span>
+                            <select id="turno">
+                                <option value="1">1º Turno</option>
+                                <option value="2">2º Turno</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label">Cargo</span>
+                            <select id="cargo">
+                                <option selected value="presidente">Presidente</option>
+                                <option value="governador">Governador</option>
+                                <option value="senador">Senador</option>
+                                <option value="prefeito">Prefeito</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-column">
+                        <div class="filter-group">
+                            <span class="filter-label">Região</span>
+                            <select id="regiao">
+                                <option value="N">Norte</option>
+                                <option value="NE">Nordeste</option>
+                                <option value="CO">Centro-Oeste</option>
+                                <option value="SE">Sudeste</option>
+                                <option value="S">Sul</option>
+                                <option selected value="BR">Todas</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label">Estado</span>
+                            <select id="estado">
+                                <option value="TODOS">Todos</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <span class="filter-label">Região Intermediária</span>
+                            <select id="regiao-intermediaria">
+                                <option value="TODAS">Todas</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="filter-column">
+                        <div class="button-group">
+                            <button id="refresh-button">
+                                <i class="fas fa-sync-alt"></i> Recarregar
+                            </button>
+                            <button id="export-button">
+                                <i class="fas fa-download"></i> Exportar
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div id="map-container">
+        <div id="map"></div>
+        <button id="toggle-panel"><i class="fas fa-chevron-left"></i></button>
+        <div class="hidden" id="info-panel">
+            <div class="panel-header">
+                <h2 class="panel-title">Detalhes e Estatísticas</h2>
+                <button class="close-btn">×</button>
+            </div>
+            <div id="panel-content">
+                <!-- O conteúdo será preenchido dinamicamente -->
+            </div>
+        </div>
+        <div id="loading-overlay">
+            <div class="spinner"></div>
+            <div>Carregando dados eleitorais...</div>
+            <div id="progress-container">
+                <div id="progress-bar"></div>
+            </div>
+            <div class="progress-text" id="progress-text">0 de 0 municípios processados</div>
+            <!-- Preenchido dinamicamente -->
+        </div>
+    </div>
+    </div>
+    <footer>
+        Dados fornecidos pelo TSE | Desenvolvido para acompanhamento eleitoral
+    </footer>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script1.js" type="module"></script>
+</body>
+
+</html>

@@ -1,0 +1,202 @@
+/* zone.css - Estilos específicos para a página de Zonas Eleitorais */
+/* Herda a maior parte dos estilos do style.css original, apenas sobrescreve e adiciona o necessário */
+
+/* Cabeçalho da página de zonas (diferencia visualmente) */
+header {
+    background: linear-gradient(135deg, #0b3b5f, #1b4f72);
+    border-bottom-color: #ff9800;
+}
+
+.logo h1 {
+    color: #ff9800;
+}
+
+.logo i {
+    color: #ff9800;
+}
+
+/* Botão de voltar */
+.back-button {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    border: 1px solid #ffd700;
+    margin-left: 15px;
+    padding: 8px 20px;
+    transition: all 0.3s ease;
+}
+
+.back-button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, #fb8c00, #ef6c00);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25);
+}
+
+/* Ajustes nos controles da zona (selectors) */
+.controls {
+    flex-wrap: nowrap;
+    gap: 15px;
+}
+
+.filter-group select {
+    background: #2c3e50;
+    border-color: #ff9800;
+}
+
+/* Painel lateral da zona (mesmo estilo base, mas com borda diferenciada) */
+#info-panel {
+    border-left-color: #ff9800;
+    background: rgba(0, 0, 0, 0.92);
+}
+
+.panel-title {
+    color: #ff9800;
+}
+
+.close-btn:hover {
+    color: #ff9800;
+}
+
+/* Botão de fechar painel */
+#close-panel {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #aaa;
+    transition: all 0.2s;
+    padding: 0 8px;
+}
+
+#close-panel:hover {
+    color: #ff9800;
+    transform: scale(1.1);
+}
+
+/* Estilo dos cards de candidato na zona (reforça cores) */
+.candidate-card {
+    border-left-color: #ff9800;
+}
+
+.candidate-name {
+    color: #ff9800;
+}
+
+.winner-badge {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    color: #2c3e50;
+}
+
+/* Estatísticas da zona (tabela de votos, sumário) */
+#party-summary h3,
+#votos-summary h3 {
+    color: #ff9800;
+}
+
+.current-region {
+    color: #ff9800;
+}
+
+.votos-table th {
+    color: #ff9800;
+}
+
+/* Barra de progresso personalizada para carregamento de zonas */
+#progress-bar {
+    background: linear-gradient(90deg, #ff9800, #ffc107);
+}
+
+/* Overlay de loading */
+#loading-overlay {
+    background: rgba(0, 0, 0, 0.9);
+    color: #ff9800;
+}
+
+.spinner {
+    border-top-color: #ff9800;
+    border-right-color: rgba(255, 152, 0, 0.3);
+    border-bottom-color: rgba(255, 152, 0, 0.3);
+    border-left-color: rgba(255, 152, 0, 0.3);
+}
+
+/* Botão de alternar painel (toggle-panel) na página de zonas */
+#toggle-panel {
+    border-color: #ff9800;
+    color: #ff9800;
+}
+
+#toggle-panel:hover {
+    background: #ff9800;
+    color: #000;
+}
+
+/* Responsividade para a página de zonas */
+@media (max-width: 1100px) {
+    .controls {
+        flex-wrap: wrap;
+    }
+
+    .back-button {
+        margin-left: 0;
+        margin-top: 8px;
+    }
+}
+
+@media (max-width: 768px) {
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .filter-group {
+        width: 100%;
+    }
+
+    .back-button {
+        width: 100%;
+        justify-content: center;
+    }
+}
+
+/* Estilo adicional para o botão de abrir zonas na página principal (já incluso no ui-handlers.js) */
+.zona-button {
+    background: linear-gradient(135deg, #ff9800, #f57c00);
+    border: none;
+    color: #000;
+    font-weight: bold;
+    padding: 12px;
+    margin: 15px 0;
+    border-radius: 30px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1rem;
+}
+
+.zona-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(255, 152, 0, 0.4);
+    background: linear-gradient(135deg, #fb8c00, #ef6c00);
+}
+
+/* Ajuste no rodapé para manter consistência */
+footer {
+    border-top-color: #ff9800;
+    color: #ff9800;
+}
+
+#btn-zonas-float {
+    font-size: 0.9rem;
+    padding: 10px 16px;
+}
+
+@media (max-width: 768px) {
+    #btn-zonas-float {
+        bottom: 10px;
+        left: 10px;
+        padding: 8px 12px;
+        font-size: 0.8rem;
+    }
+}
