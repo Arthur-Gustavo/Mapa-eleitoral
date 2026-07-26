@@ -35,8 +35,8 @@ export class ZonaMapController {
 
     _defaultStyle(feature) {
         return {
-            color: '#333',
-            weight: 1,
+            color: '#fff',
+            weight: 1.5,
             fillColor: '#aaa',
             fillOpacity: 0.5
         };
