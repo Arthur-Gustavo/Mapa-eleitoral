@@ -18,5 +18,17 @@
   {
     "municipio": "BELO HORIZONTE",
     "uf": "MG"
+  },
+  {
+    "municipio": "PORTO ALEGRE",
+    "uf": "RS"
+  },
+  {
+    "municipio": "MACEIÓ",
+    "uf": "AL"
+  },
+  {
+    "municipio": "CUIABÁ",
+    "uf": "MT"
   }
 ]
