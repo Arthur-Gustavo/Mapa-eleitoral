@@ -1,6 +1,5 @@
 // Importar todos os módulos
-import { regioes, todasUFs } from './modules/constants.js';
-import { construirUrlResultado } from './modules/ElectionService.js';
+import { regioes, todasUFs, cargoMap, codigosEleicao } from './modules/constants.js';
 import { initMap, getMap, getLayerGroup, setLayerGroup, getMapStyle, createGeoJsonLayer } from './modules/map.js';
 import { getColorByPercentage, coresPartido } from './modules/colors.js';
 import checkboxManager from './modules/checkbox-manager.js';
@@ -177,13 +176,9 @@ export async function carregarDados() {
                     // Dados TSE (2024, 2026)
                     else if (ano === '2024' || ano === '2026') {
                         try {
-                            const url = construirUrlResultado({
-                                ano,
-                                turno,
-                                cargo,
-                                siglaUF,
-                                codigoTSE
-                            });
+                            const ufLower = siglaUF.toLowerCase();
+                            const codigoTurno = codigosEleicao[ano]?.[turno] || '000';
+                            const url = `https://resultados.tse.jus.br/oficial/ele${ano}/${codigoTurno}/dados/${ufLower}/${ufLower}${codigoTSE}-c${cargoMap[cargo]}-e000${codigoTurno}-u.json`;
 
                             const resp = await fetch(url);
                             if (resp.ok) {

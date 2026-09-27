@@ -25,14 +25,12 @@ export class ZonaDataService {
         //const url = `https://resultados.tse.jus.br/oficial/ele${ano}/${codTurno}/dados/${uf}/${uf}${municipioPadded}-z${zonaPadded}-c${cargoCode}-e000${codTurno}-u.json`;
         let codEleicao;
 
-        if (String(ano) === '2026') {
+        if (ano === 2026) {
             let tipoEleicao;
 
-            const cargo = String(cargoCode).padStart(4, '0');
-
-            if (cargo === '0001') {
+            if (cargoCode === '0001') {
                 tipoEleicao = 'federal';
-            } else if (cargo === '0008') {
+            } else if (cargoCode === '0008') {
                 tipoEleicao = 'distrital';
             } else {
                 tipoEleicao = 'estadual';
@@ -42,7 +40,6 @@ export class ZonaDataService {
         } else {
             codEleicao = codigosEleicao[ano]?.[turno] || '000';
         }
-
 
         const zonaPadded = String(zonaNum).padStart(4, '0');
         const municipioPadded = String(municipioCodigo).padStart(5, '0');

@@ -1,6 +1,5 @@
 // modules/data-loader.js - CORRIGIDO
-import { regioes, todasUFs } from './constants.js';
-import { construirUrlResultado } from './ElectionService.js';
+import { regioes, todasUFs, cargoMap, codigosEleicao } from './constants.js';
 
 // Variáveis de estado
 let geoJsonData = null;
@@ -112,13 +111,9 @@ export async function carregarDadosTSE(ano, turno, cargo, siglaUF, codigoTSE) {
     }
     // Para 2024, 2026 - requisição ao TSE
     else if (ano === '2024' || ano === '2026') {
-        const url = construirUrlResultado({
-            ano,
-            turno,
-            cargo,
-            siglaUF,
-            codigoTSE
-        });
+        const ufLower = siglaUF.toLowerCase();
+        const codigoTurno = codigosEleicao[ano]?.[turno] || '000';
+        const url = `https://resultados.tse.jus.br/oficial/ele${ano}/${codigoTurno}/dados/${ufLower}/${ufLower}${codigoTSE}-c${cargoMap[cargo]}-e000${codigoTurno}-u.json`;
         try {
             const resp = await fetch(url);
             if (resp.ok) {

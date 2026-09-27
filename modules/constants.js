@@ -13,8 +13,16 @@ export const codigosEleicao = {
         2: '620'
     },
     2026: {
-        1: '000',
-        2: '000'
+        1: {
+            federal: '6257',
+            estadual: '6259',
+            distrital: '6261'
+        },
+        2: {
+            federal: '000',
+            estadual: '000',
+            municipal: '000'
+        }
     }
 };
 
