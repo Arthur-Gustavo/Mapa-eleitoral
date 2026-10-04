@@ -7,9 +7,9 @@ export class ZonaDataService {
         this.TTL = 90 * 1000; // 90 seconds
     }
 
-    _getCacheKey(uf, municipio, zona, ano, cargo) {
-        return `${ano}|${cargo}|${uf}|${municipio}|${zona}`;
-    }
+    _getCacheKey(uf, municipio, zona, ano, turno, cargo) {
+    return `${ano}|${turno}|${cargo}|${uf}|${municipio}|${zona}`;
+}
 
     async fetchZoneResults(uf, municipioCodigo, zonaNum, ano, turno, cargoCode) {
         const cacheKey = this._getCacheKey(uf, municipioCodigo, zonaNum, ano, turno, cargoCode);

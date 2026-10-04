@@ -327,6 +327,11 @@
     "uf": "MT"
   },
   {
+    "codigo_tse": "73709",
+    "municipio": "BOA ESPERANÇA DO NORTE",
+    "uf": "MT"
+  },
+  {
     "codigo_tse": "24937",
     "municipio": "OROBÓ",
     "uf": "PE"
@@ -12940,6 +12945,12 @@
   {
     "codigo_tse": "29971",
     "municipio": "LONDRES",
+    "uf": "ZZ",
+    "pais": "REINO UNIDO"
+  },
+  {
+    "codigo_tse": "99503",
+    "municipio": "EDIMBURGO",
     "uf": "ZZ",
     "pais": "REINO UNIDO"
   },
@@ -25893,6 +25904,12 @@
     "pais": "FRANÇA"
   },
   {
+    "codigo_tse": "99511",
+    "municipio": "MARSELHA",
+    "uf": "ZZ",
+    "pais": "FRANÇA"
+  },
+  {
     "codigo_tse": "86487",
     "municipio": "CANDIOTA",
     "uf": "RS"
@@ -26553,6 +26570,18 @@
     "municipio": "BOSTON",
     "uf": "ZZ",
     "pais": "ESTADOS UNIDOS"
+  },
+  {
+    "codigo_tse": "99490",
+    "municipio": "ORLANDO",
+    "uf": "ZZ",
+    "pais": "ESTADOS UNIDOS"
+  },
+  {
+    "codigo_tse": "99449",
+    "municipio": "MONRÓVIA",
+    "uf": "ZZ",
+    "pais": "LIBÉRIA"
   },
   {
     "codigo_tse": "30716",

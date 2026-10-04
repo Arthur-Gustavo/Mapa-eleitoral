@@ -34,5 +34,21 @@
   {
     "municipio": "SÃO PAULO",
     "uf": "SP"
+  },
+  {
+    "municipio": "RIO DE JANEIRO",
+    "uf": "RJ"
+  },
+  {
+    "municipio": "GOIÂNIA",
+    "uf": "GO"
+  },
+  {
+    "municipio": "BRASÍLIA",
+    "uf": "DF"
+  },
+  {
+    "municipio": "NATAL",
+    "uf": "RN"
   }
 ]

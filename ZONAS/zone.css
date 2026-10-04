@@ -200,3 +200,39 @@ footer {
         font-size: 0.8rem;
     }
 }
+/* Botão para reabrir o painel de resultados */
+#open-panel {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 1000;
+
+    width: 42px;
+    height: 42px;
+    padding: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background: rgba(0, 0, 0, 0.82);
+    border: 1px solid #ff9800;
+    border-radius: 6px;
+
+    color: #ff9800;
+    font-size: 18px;
+
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
+}
+
+#open-panel:hover {
+    background: #ff9800;
+    color: #000;
+    transform: scale(1.05);
+}
+
+#open-panel.hidden {
+    display: none;
+}

@@ -14,6 +14,7 @@ const progressText = document.getElementById('progress-text');
 const progressBar = document.getElementById('progress-bar');
 const closePanelBtn = document.getElementById('close-panel');
 const infoPanel = document.getElementById('info-panel');
+const openPanelBtn = document.getElementById('open-panel');
 
 const urlParams = new URLSearchParams(window.location.search);
 let municipioCodigo = urlParams.get('municipio');
@@ -178,8 +179,28 @@ async function init() {
         });
 
         if (closePanelBtn) {
-            closePanelBtn.onclick = () => infoPanel.classList.add('hidden');
-        }
+    closePanelBtn.onclick = () => {
+        ZonaStatistics.showAggregatedResults(
+            resultsMap,
+            currentCityData.municipio
+        );
+
+        infoPanel.classList.add('hidden');
+        openPanelBtn?.classList.remove('hidden');
+    };
+}
+
+if (openPanelBtn) {
+    openPanelBtn.onclick = () => {
+        ZonaStatistics.showAggregatedResults(
+            resultsMap,
+            currentCityData.municipio
+        );
+
+        infoPanel.classList.remove('hidden');
+        openPanelBtn.classList.add('hidden');
+    };
+}
     } catch (err) {
         console.error(err);
         alert('Erro ao carregar zonas: ' + err.message);

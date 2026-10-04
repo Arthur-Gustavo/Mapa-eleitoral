@@ -369,7 +369,7 @@ export function mostrarDetalhesMunicipio(properties) {
     });
 
 }
-
+//totalização de seções
 function mostrarTotalizacaoSecoes() {
     const ano = document.getElementById('ano').value;
     if (ano !== '2024' && ano !== '2026') return null;
@@ -377,15 +377,44 @@ function mostrarTotalizacaoSecoes() {
     const geoData = getGeoJsonData();
     if (!geoData || !geoData.features) return null;
 
-    // 🆕 SIMPLES: Somar todas as seções de todas as features
+    const regiaoIntermediariaSelecionada =
+        document.getElementById('regiao-intermediaria')?.value || 'TODAS';
+
+    let featuresFiltradas = geoData.features;
+
+    if (
+        regiaoIntermediariaSelecionada !== 'TODAS' &&
+        regiaoIntermediariaSelecionada
+    ) {
+        const regioesIntermediarias = getRegioesIntermediariasData();
+        const municipiosRegiao =
+            regioesIntermediarias?.[regiaoIntermediariaSelecionada];
+
+        if (municipiosRegiao) {
+            const codigosMunicipios = new Set(
+                municipiosRegiao.map(m => String(m.codigo_tse))
+            );
+
+            featuresFiltradas = geoData.features.filter(feature => {
+                const codigo = feature?.properties?.codigo_tse;
+                return codigo != null &&
+                    codigosMunicipios.has(String(codigo));
+            });
+        }
+    }
+
     let totalSecoes = 0;
     let secoesTotalizadas = 0;
     let municipiosComDados = 0;
 
-    geoData.features.forEach(feature => {
-        if (feature && feature.properties && feature.properties.secoes) {
+    featuresFiltradas.forEach(feature => {
+        if (feature?.properties?.secoes) {
             const secoes = feature.properties.secoes;
-            if (secoes.ts !== undefined && secoes.st !== undefined) {
+
+            if (
+                secoes.ts !== undefined &&
+                secoes.st !== undefined
+            ) {
                 totalSecoes += parseInt(secoes.ts) || 0;
                 secoesTotalizadas += parseInt(secoes.st) || 0;
                 municipiosComDados++;
