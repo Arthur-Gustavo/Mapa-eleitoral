@@ -41,7 +41,6 @@ export const coresPartido = {
 // Mapeamentos extras
 coresPartido['PRB'] = coresPartido['REPUBLICANOS'];
 coresPartido['PPS'] = coresPartido['CIDADANIA'];
-coresPartido['UNIÃO BRASIL'] = coresPartido['UNIÃO'];
 
 // Degradês para eleições presidenciais, governador e senador
 export const degradesPresidenciais = {
@@ -174,7 +173,7 @@ export const degradesPresidenciais = {
         '90%+': 'rgb(114, 40, 107)'
     }
 };
-
+degradesPresidenciais['UNIÃO'] = degradesPresidenciais['UNIÃO BRASIL'];
 // Função para obter cor baseada na porcentagem
 export function getColorByPercentage(partido, porcentagem) {
     if (!degradesPresidenciais[partido]) {
