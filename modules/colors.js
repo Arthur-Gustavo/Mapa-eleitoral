@@ -41,6 +41,7 @@ export const coresPartido = {
 // Mapeamentos extras
 coresPartido['PRB'] = coresPartido['REPUBLICANOS'];
 coresPartido['PPS'] = coresPartido['CIDADANIA'];
+coresPartido['UNIÃO BRASIL'] = coresPartido['UNIÃO'];
 
 // Degradês para eleições presidenciais, governador e senador
 export const degradesPresidenciais = {
