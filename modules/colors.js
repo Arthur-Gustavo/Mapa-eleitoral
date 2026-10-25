@@ -13,7 +13,7 @@ export const coresPartido = {
     'PT': '#FF0000',
     'PSDB': '#02F6FF',
     'PSOL': '#CA3A75',
-    'REDE': '#6BCF42',
+    'REDE': '#6bcf42',
     'NOVO': '#FF6B00',
     'CIDADANIA': '#ff3489ff',
     'PODE': '#b746ac',
@@ -35,7 +35,7 @@ export const coresPartido = {
     'PHS': 'rgb(188, 94, 2)',
     'PTB': 'rgb(185, 175, 24)',
     'PRP': '#769e3a',
-    'MISSÃO': 'rgb(247, 200, 2)'
+    'MISSÃO': '#f7c802'
 };
 
 // Mapeamentos extras

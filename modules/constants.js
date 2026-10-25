@@ -19,8 +19,8 @@ export const codigosEleicao = {
             distrital: '6261'
         },
         2: {
-            federal: '000',
-            estadual: '000',
+            federal: '6258',
+            estadual: '6260',
             municipal: '000'
         }
     }
